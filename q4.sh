@@ -1,7 +1,11 @@
 
 #!/bin/bash
 
-#!/bin/bash
+# Check if no parameters are passed
+if [ $# -eq 0 ]; then
+    echo "Usage: ./q4.sh file.txt file.sh dir1 dir2 example.pdf ..."
+    exit 1
+fi
 
 # Iterate through the list of items
 for item in "$@"
