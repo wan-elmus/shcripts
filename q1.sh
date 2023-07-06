@@ -1,31 +1,33 @@
 
 #!/bin/bash
 
-# Variables to store total pay and number of employees
+# Variables to keep track of total employees and total pay
+total_employees=0
 total_pay=0
-num_employees=0
 
-# Read each line from the employees.txt file
-while IFS=" " read -r name hours wages; do
-  if [[ $hours -le 40 ]]; then
-    pay=$((hours * wages))
+# Read the employees.txt file line by line
+while IFS=' ' read -r name hours wages
+do
+  # Calculate the pay based on the provided formula
+  if [ "$hours" -le 40 ]; then
+    pay=$(echo "$hours * $wages" | bc)
   else
-    pay=$((40 * wages + 2 * (hours - 40) * wages))
+    overtime_hours=$(echo "$hours - 40" | bc)
+    pay=$(echo "40 * $wages + 2 * $overtime_hours * $wages" | bc)
   fi
 
-  # Add the current employee's pay to the total
-  total_pay=$((total_pay + pay))
+  # Print the employee's pay
+  echo "Pay for $name: $pay"
 
-  # Increment the number of employees
-  ((num_employees++))
-
-  # Output the employee's name and pay
-  echo "$name: $pay"
+  # Update total employees and total pay
+  total_employees=$((total_employees + 1))
+  total_pay=$(echo "$total_pay + $pay" | bc)
 done < employees.txt
 
-# Compute the average pay
-average_pay=$((total_pay / num_employees))
+# Calculate the average pay
+average_pay=$(echo "scale=2; $total_pay / $total_employees" | bc)
 
-# Output the total number of employees processed and the average pay
-echo "Total employees processed: $num_employees"
-echo "Average pay: $average_pay"
+# Print the total number of employees processed and the average pay computed
+echo "Total employees processed: $total_employees"
+echo "Average pay computed: $average_pay"
+
