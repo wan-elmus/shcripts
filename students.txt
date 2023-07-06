@@ -1,0 +1,11 @@
+Tommy Mars CIT 90 80 70 89 76
+Ruth Underwood CIT 95 96 94 88 91
+Jeff Beck ENG 76 40 60 53 56
+George Duke MUS 100 90 100 92 95
+Thana Harris CSC 80 89 82 86 95
+Frank Zappa CSC 51 36 63 58 90
+Steve Hackett MUS 65 64 80 75 82
+Suzie Creamcheese MIN 80 79 66 54 83
+Phideaux Xavier CIT 57 51 63 86 69
+Valerie Gracious MUS 85 86 75 76 91
+Steve Howe CIT 90 80 70 70 60
