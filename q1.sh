@@ -8,20 +8,20 @@ total_pay=0
 # Read the employees.txt file line by line
 while IFS=' ' read -r name hours wages
 do
-  # Calculate the pay based on the provided formula
-  if [ "$hours" -le 40 ]; then
+    # Calculate the pay based on the provided formula
+    if [ "$hours" -le 40 ]; then
     pay=$(echo "$hours * $wages" | bc)
-  else
+    else
     overtime_hours=$(echo "$hours - 40" | bc)
     pay=$(echo "40 * $wages + 2 * $overtime_hours * $wages" | bc)
-  fi
+    fi
 
-  # Print the employee's pay
-  echo "Pay for $name: $pay"
+    # Print the employee's pay
+    echo "Pay for $name: $pay"
 
-  # Update total employees and total pay
-  total_employees=$((total_employees + 1))
-  total_pay=$(echo "$total_pay + $pay" | bc)
+    # Update total employees and total pay
+    total_employees=$((total_employees + 1))
+    total_pay=$(echo "$total_pay + $pay" | bc)
 done < employees.txt
 
 # Calculate the average pay
