@@ -25,5 +25,3 @@ done
 
 # If loop lacks a mismatch, it's a palindrome
 echo "$input is a palindrome"
-
-

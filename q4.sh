@@ -7,21 +7,20 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-# Iterate through the list of items
+# Iterate through items
 for item in "$@"
 do
-    # Obtain the permissions of the item
+    # Get permissions of the item
     permissions=$(ls -l "$item" | awk '{print $1}')
     
-    # Extract the relevant portions of the permissions
+    # Extract relevant parts of the permissions
     permission_set=$(echo "$permissions" | cut -c 2-10)
     
-    # Initialize the sums
     first=0
     second=0
     third=0
     
-    # Convert the permissions into numeric values
+    # Convert permissions into numeric values
     if [ "${permission_set:0:1}" = "r" ]; then
         first=$((first+4))
     fi
@@ -58,7 +57,6 @@ do
         third=$((third+1))
     fi
     
-    # Print the file name and the numeric permissions
+    # Output file name and numeric permissions
     echo "$item $first$second$third"
 done
-

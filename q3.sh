@@ -7,11 +7,11 @@ fail_count=0
 # Read the students.txt file 
 while IFS=' ' read -r first_name last_name major score1 score2 score3 score4 score5
 do
-    # Compute average test score
+    # Calculate average test score
     total_score=$((score1 + score2 + score3 + score4 + score5 + score5))
     average_score=$(echo "scale=2; $total_score / 6" | bc)
 
-    # Assign a letter grade based on the average score
+    # Assign a letter grade
     if [ $(echo "$average_score >= 90" | bc -l) -eq 1 ]; then
         grade="A"
     elif [ $(echo "$average_score >= 80" | bc -l) -eq 1 ]; then
@@ -42,3 +42,4 @@ done < "students.txt"
 # Output 
 echo "Number of students passed: $pass_count"
 echo "Number of students failed: $fail_count"
+

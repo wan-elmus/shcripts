@@ -1,7 +1,7 @@
 
 #!/bin/bash
 
-# Check if the major parameter is provided
+# Check  major parameter
 if [ -z "$1" ]; then
     echo "Please provide a major as a parameter."
     exit 1
@@ -9,10 +9,9 @@ fi
 
 major="$1"
 
-# Variable to keep track of the number of students found
 count=0
 
-# Read the students.txt file line by line
+# Read students.txt file
 while IFS=' ' read -r first_name last_name student_major score1 score2 score3 score4 score5
 do
     # Check if the student's major matches the specified major
@@ -22,5 +21,5 @@ do
     fi
 done < students.txt
 
-# Output the number of students found
+# Output  students
 echo "Number of students found: $count"
